@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div id="chat-container">
+        <div id="messages"></div>
+        <form id="chat-form">
+            <input type="text" id="user-input" placeholder="Type a message...">
+            <button type="submit">Send</button>
+        </form>
+    </div>
+    <script>
+        document.getElementById('chat-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const userInput = document.getElementById('user-input').value;
+            fetch('/chat', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ message: userInput })
+            })
+            .then(response => response.json())
+            .then(data => {
+                const messages = document.getElementById('messages');
+                const userMessage = document.createElement('div');
+                userMessage.classList.add('message', 'user');
+                userMessage.textContent = userInput;
+                messages.appendChild(userMessage);
+
+                const botMessage = document.createElement('div');
+                botMessage.classList.add('message', 'bot');
+                botMessage.textContent = data.response;
+                messages.appendChild(botMessage);
+
+                document.getElementById('user-input').value = '';
+            });
+        });
+    </script>
+</body>
+</html>

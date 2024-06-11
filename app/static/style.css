@@ -1,0 +1,78 @@
+/* style.css */
+
+body, html {
+    height: 100%;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f0f0f0;
+}
+
+#chat-container {
+    display: flex;
+    flex-direction: column;
+    width: 80vw;  /* 视口宽度的80% */
+    height: 80vh; /* 视口高度的80% */
+    max-width: 1200px;  /* 最大宽度 */
+    max-height: 800px;  /* 最大高度 */
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    background-color: white;
+}
+
+#messages {
+    flex: 1;
+    padding: 10px;
+    overflow-y: auto;
+    border-bottom: 1px solid #ccc;
+}
+
+.message {
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    max-width: 80%;
+}
+
+.message.user {
+    background-color: #007bff;
+    color: white;
+    align-self: flex-end;
+}
+
+.message.bot {
+    background-color: #f1f1f1;
+    color: black;
+    align-self: flex-start;
+}
+
+#chat-form {
+    display: flex;
+    border-top: 1px solid #ccc;
+}
+
+#user-input {
+    flex: 1;
+    border: none;
+    padding: 10px;
+}
+
+#user-input:focus {
+    outline: none;
+}
+
+button {
+    padding: 10px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+}
+
+button:focus {
+    outline: none;
+}
