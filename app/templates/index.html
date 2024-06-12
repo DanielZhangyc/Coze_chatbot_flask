@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="cn">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -30,12 +30,12 @@
                 const messages = document.getElementById('messages');
                 const userMessage = document.createElement('div');
                 userMessage.classList.add('message', 'user');
-                userMessage.textContent = userInput;
+                userMessage.innerHTML = userInput;
                 messages.appendChild(userMessage);
 
                 const botMessage = document.createElement('div');
                 botMessage.classList.add('message', 'bot');
-                botMessage.textContent = data.response;
+                botMessage.innerHTML = data.response;
                 messages.appendChild(botMessage);
 
                 document.getElementById('user-input').value = '';
